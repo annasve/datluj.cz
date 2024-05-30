@@ -17,7 +17,8 @@ const Wordbox: React.FC<IWordboxProp> = ({
   const [lettersLeft, setLettersLeft] = useState<string>(word);
   const [mistake, setMistake] = useState<boolean>(false);
 
-  const handleKeyUp = (evt: React.KeyboardEvent) => {
+  //(this: Document, ev: KeyboardEvent) => any
+  const handleKeyUp = (evt: KeyboardEvent) => {
     //--remove correctly written first letter
     if (lettersLeft[0] === evt.key) {
       //--always make the field green
@@ -46,10 +47,7 @@ const Wordbox: React.FC<IWordboxProp> = ({
   }, [lettersLeft, active, onMistake]);
 
   return (
-    <div
-      onKeyUp={handleKeyUp}
-      className={mistake ? 'wordbox wordbox--mistake' : 'wordbox'}
-    >
+    <div className={mistake ? 'wordbox wordbox--mistake' : 'wordbox'}>
       {lettersLeft}
     </div>
   );

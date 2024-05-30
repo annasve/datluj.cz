@@ -3,8 +3,6 @@ import Wordbox from '../Wordbox';
 import wordList from '../../word-list';
 import './style.css';
 
-// TODO: temporary disable function - remove next line when you start using it
-/* eslint-disable-next-line @typescript-eslint/no-unused-vars */
 const generateWord = (size: number) => {
   const sizeIndex =
     size === undefined ? Math.floor(Math.random() * wordList.length) : size - 3;
@@ -30,7 +28,7 @@ const Stage = () => {
 
     //-- remove first word, generate a new last word
     words.shift();
-    words.push(generateWord(6));
+    words.push(generateWord(6) ?? 'náhoda'); //an alternative: const word = generateWord(6) as string
     const newWords = [...words];
     setWords(newWords);
   };
